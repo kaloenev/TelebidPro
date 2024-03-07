@@ -9,14 +9,15 @@ public class EmailSender {
     private EmailSender(){}
 
     public static void sendVerificationEmail(String recipientEmail, String verificationCode) {
-        final String username = "email";
-        final String password = "password";
+        final String username = "myclassroomcontact@gmail.com";
+        final String password = "nkpk biue fxow peno";
 
         Properties props = new Properties();
         props.put("mail.smtp.auth", "true");
         props.put("mail.smtp.starttls.enable", "true");
-        props.put("mail.smtp.host", "smtp.example.com");
+        props.put("mail.smtp.host", "smtp.gmail.com");
         props.put("mail.smtp.port", "587");
+        props.put("mail.smtp.ssl.protocols", "TLSv1.2");
 
         Session session = Session.getInstance(props, new Authenticator() {
             @Override

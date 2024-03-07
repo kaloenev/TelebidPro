@@ -4,9 +4,9 @@ import java.sql.*;
 
 public class UserDao {
 
-    private static final String JDBC_URL = "jdbc:mysql://localhost:3306/demo?useSSL=false";
+    private static final String JDBC_URL = "jdbc:mysql://localhost:3306/mydatabase";
     private static final String JDBC_USERNAME = "root";
-    private static final String JDBC_PASSWORD = "root";
+    private static final String JDBC_PASSWORD = "20010205KuR@";
 
     private static final String ENABLE_USER_BY_VERIFIC = "update users set isEnabled = ?, verification_link = ? " +
             "where verification_link = ?;";
@@ -22,7 +22,7 @@ public class UserDao {
 
     private static final String DELETE_USERS_SQL = "delete from users where username = ?;";
 
-    private static final String INSERT_USERS_SQL = "INSERT INTO User" +
+    private static final String INSERT_USERS_SQL = "INSERT INTO users" +
             "  (id, first_name, last_name, username, password, email, isEnabled, verification_link) VALUES " +
             " (?, ?, ?, ?, ?, ?, ?, ?);";
 
@@ -38,8 +38,9 @@ public class UserDao {
     protected Connection getConnection() {
         Connection connection = null;
         try {
+            Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection(JDBC_URL, JDBC_USERNAME, JDBC_PASSWORD);
-        } catch (SQLException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
         return connection;

@@ -11,7 +11,7 @@ public class DatabaseInitializer implements ServletContextListener {
     // JDBC URL, username, and password of the MySQL server
     private static final String URL = "jdbc:mysql://localhost:3306/";
     private static final String USER = "root";
-    private static final String PASSWORD = "root";
+    private static final String PASSWORD = "20010205KuR@";
 
     // SQL commands to create database with the name mydatabase and users table
     private static final String CREATE_DATABASE = "CREATE DATABASE IF NOT EXISTS mydatabase";

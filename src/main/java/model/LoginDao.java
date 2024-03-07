@@ -16,15 +16,15 @@ import java.util.Arrays;
 import controller.LoginBean;
 
 public class LoginDao {
-    private String jdbcURL = "jdbc:mysql://localhost:3306/demo?useSSL=false";
-    private String jdbcUsername = "root";
-    private String jdbcPassword = "root";
+    private static final String JDBC_URL = "jdbc:mysql://localhost:3306/mydatabase";
+    private static final String JDBC_USERNAME = "root";
+    private static final String JDBC_PASSWORD = "20010205KuR@";
 
     protected Connection getConnection() {
         Connection connection = null;
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection(jdbcURL, jdbcUsername, jdbcPassword);
+            connection = DriverManager.getConnection(JDBC_URL, JDBC_USERNAME, JDBC_PASSWORD);
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
@@ -54,7 +54,7 @@ public class LoginDao {
         try (Connection connection = getConnection();
 
              PreparedStatement preparedStatement = connection
-                     .prepareStatement("select * from login where username = ? and password = ? ")) {
+                     .prepareStatement("select * from users where username = ? and password = ? ")) {
             preparedStatement.setString(1, loginBean.getUsername());
             preparedStatement.setString(2, passwordHash);
 
